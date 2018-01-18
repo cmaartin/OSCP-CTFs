@@ -10,6 +10,7 @@ Detailed Single Host Intense TCP Port Scan
 nmap -T1 -Pn -nvv -sSV --version-intensity 9 -p$(cat <$IP>T.xml | grep portid | grep protocol=\"tcp\" | cut -d'"' -f4 | paste -sd "," -)  -A -oA <$IP>T_DETAILED <$IP>
 ```
 
+
 Hidden Scan [Top 1000 Ports] - IF You think some ports are not showing up
 ```
 nmap -sT -Pn <$IP> -vv -o hiddenscan.txt
