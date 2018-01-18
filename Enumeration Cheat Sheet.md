@@ -35,3 +35,11 @@ nmap -Pn -n -sT -sV -O -vv <$IP> -p0-65535
 nmap -Pn  -sU -p1-65535 -o udpScan.txt --max-retries 1 --max-scan-delay 20 -T4 <$IP>
 ```
 
+UNICORN UDP Scan
+```
+unicornscan -i tap0 -I -mU $IP:a
+```
+UNICORN TCP Scan
+```
+unicornscan -i tap0 -I -mT $IP:a
+```
