@@ -53,3 +53,17 @@ Change EXPORT path to /tmp/
   - Create a binary file with the same name as dependency
   - Have this file create a reverse shell
 Run the misconfigured SUID file, it will return a reverse shell using SUID
+
+
+# EXPLOITING LFI / RFI
+#### BASIC LFI
+```
+     Log Poisoning
+     Using LFI to run an already uploaded backdoor
+```
+#### BASIC RFI
+```
+Create a .php reverse shell
+Rename file extension to .txt  [ May need to append null bytes depending if headers are included, check apache access logs ]
+Navigate to file through RFI exploit
+```
