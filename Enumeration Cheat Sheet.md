@@ -35,11 +35,38 @@ nmap -Pn -n -sT -sV -O -vv <$IP> -p0-65535
 nmap -Pn  -sU -p1-65535 -o udpScan.txt --max-retries 1 --max-scan-delay 20 -T4 <$IP>
 ```
 
-UNICORN UDP Scan
+**UNICORN UDP Scan**
 ```
 unicornscan -i tap0 -I -mU $IP:a
 ```
-UNICORN TCP Scan
+**UNICORN TCP Scan**
 ```
 unicornscan -i tap0 -I -mT $IP:a
 ```
+
+
+# HTTP Web Scans
+
+#### NIKTO
+#### DIRBUSTER
+```
+  /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt
+  /usr/share/wordlists/dirb/common.txt
+  /usr/share/seclists/Discovery/Web_Content/big.txt
+```
+
+# SMB Scans
+
+#### ENUM4LINUX
+#### SMBCLIENT
+```
+smbclient -L <IPADDRESS> -N
+```
+##### Accessing Shares
+```
+smbclient //<IPADDRESS>/wwwroot/ -I <IPADDRESS -N
+```
+
+# FTP 
+
+#### Anonymous Login
