@@ -27,7 +27,7 @@ nmap -Pn -sS --stats-every 3m --max-retries 1 --max-scan-delay 20 --defeat-rst-r
 ```
 nmap -Pn -n -sT -sV -O -vv <$IP> -p0-65535 
 ```
-**UDP Scan [Top 1000 Ports] **
+**UDP Scan *[Top 1000 Ports]* **
 ```
 nmap -Pn  -sU -p1-65535 -o udpScan.txt --max-retries 1 --max-scan-delay 20 -T4 <$IP>
 ```
