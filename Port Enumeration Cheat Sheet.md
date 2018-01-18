@@ -13,7 +13,7 @@ nmap -T1 -Pn -nvv -sSV --version-intensity 9 -p$(cat <$IP>T.xml | grep portid | 
 
 **Hidden Scan *[Top 1000 Ports]* - IF You think some ports are not showing up**
 ```
-nmap -sT -Pn <$IP> -vv -o hiddenscan.txt
+nmap -sT -Pn <$IP> -vv 
 ```
 **Hidden - All Port Scan**
 ```
