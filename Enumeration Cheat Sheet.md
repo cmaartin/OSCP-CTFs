@@ -74,3 +74,10 @@ smbclient //<IPADDRESS>/wwwroot/ -I <IPADDRESS -N
     user: anonymous
     pass: anon@anon
 ```
+# NMAP NSE Scripts
+
+```
+nmap --script vuln <IPADDRESS> -p <PORT>
+nmap --script default <IPADDRESS> -p <PORT>
+nmap --script auth <IPADDRESS> -p <PORT>
+```
