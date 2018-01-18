@@ -1,6 +1,8 @@
 
 # NMAP Scan
 
+## AUTOMATED IN SCRIPT SECTION
+
 **Single Host TCP Scan**
 ```
 nmap -Pn -sS --stats-every 3m --max-retries 1 --max-scan-delay 20 --defeat-rst-ratelimit -T4 -p1-65535 -oA <$IP>T <$IP>
