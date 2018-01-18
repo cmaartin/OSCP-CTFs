@@ -70,3 +70,7 @@ smbclient //<IPADDRESS>/wwwroot/ -I <IPADDRESS -N
 # FTP 
 
 #### Anonymous Login
+```
+    user: anonymous
+    pass: anon@anon
+```
