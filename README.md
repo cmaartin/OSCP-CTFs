@@ -1,3 +1,3 @@
-# BOOT TO ROOT Walk-throughs 
+# Practicing BOOT TO ROOT 
 # AND
 # CHEAT SHEETS FOR OSCP
