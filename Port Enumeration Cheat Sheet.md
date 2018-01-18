@@ -2,6 +2,7 @@
 # NMAP Scan
 
 ## AUTOMATED IN SCRIPT SECTION
+/boot2root/script/
 
 **Single Host TCP Scan**
 ```
