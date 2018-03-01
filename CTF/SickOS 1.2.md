@@ -81,6 +81,8 @@ We are returned with Expectation Failed, which is unique. A bit of googling
 https://stackoverflow.com/questions/9120760/curl-simple-file-upload-417-expectation-failed
 
 Says we need to include --http1.0
+### Vulnerability - Misconfigured Upload
+
 ```
 curl -T 'test.txt' 'http://192.168.114.132/test/test.txt' --http1.0
 ```
